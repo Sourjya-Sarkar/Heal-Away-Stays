@@ -17,7 +17,7 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 // Set the base URL for axios requests
 axios.defaults.baseURL = [
   "http://localhost:3000",
-  " https://heal-away-stays-y2hj.vercel.app/",
+  " https://heal-away-stays.onrender.com",
 ]; // Adjust this to your API
 axios.defaults.withCredentials = true; // Enable sending cookies with requests
 
