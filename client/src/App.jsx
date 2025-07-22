@@ -15,9 +15,8 @@ import BookingPage from "./pages/BookingPage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 
 // Set the base URL for axios requests
-(axios.defaults.baseURL = "https://heal-away-stays.onrender.com"),
-  // Adjust this to your API
-  (axios.defaults.withCredentials = true); // Enable sending cookies with requests
+axios.defaults.baseURL = "https://heal-away-stays.onrender.com"; // Set base URL
+axios.defaults.withCredentials = true; // Enable sending cookies
 
 function App() {
   return (
