@@ -4,6 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 
 export default function PlaceDetailPage() {
   const { id } = useParams();
@@ -16,7 +19,9 @@ export default function PlaceDetailPage() {
   useEffect(() => {
     async function fetchPlace() {
       try {
-        const res = await fetch(`http://localhost:3000/places/${id}`);
+        const res = await fetch(`${API_BASE_URL}/places/${id}`, {
+          credentials: "include", // ✅ send cookies (JWT)
+        });
         if (!res.ok) throw new Error("Place not found");
         setPlace(await res.json());
         setError(false);
@@ -72,7 +77,7 @@ export default function PlaceDetailPage() {
         {place.photos?.map((url, i) => (
           <motion.img
             key={i}
-            src={`http://localhost:3000/uploads/${url}`}
+            src={`${API_BASE_URL}/uploads/${url}`} // ✅ this is now correct
             alt=""
             className="rounded-lg w-full h-48 object-cover"
             whileHover={{ scale: 1.03 }}

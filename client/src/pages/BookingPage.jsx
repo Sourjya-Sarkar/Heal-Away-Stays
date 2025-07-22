@@ -3,6 +3,9 @@ import { useParams, Navigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../UserContext";
 import { differenceInCalendarDays } from "date-fns";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 
 export default function BookingPage() {
   const { id } = useParams();
@@ -60,7 +63,7 @@ export default function BookingPage() {
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-semibold mb-4">{place.title}</h1>
       <img
-        src={`http://localhost:3000/uploads/${place.photos?.[0]}`}
+        src={`${API_BASE_URL}/uploads/${place.photos[0]}`}
         alt=""
         className="rounded-lg mb-6"
       />

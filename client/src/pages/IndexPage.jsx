@@ -5,6 +5,9 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 
 export default function IndexPage() {
   const [places, setPlaces] = useState([]);
@@ -66,7 +69,7 @@ export default function IndexPage() {
               <div className="aspect-w-4 aspect-h-3 bg-gray-200">
                 {place.photos?.[0] && (
                   <LazyLoadImage
-                    src={`http://localhost:3000/uploads/${place.photos[0]}`}
+                    src={`${axios.defaults.baseURL}/uploads/${place.photos[0]}`}
                     alt={place.title}
                     effect="blur"
                     className="object-cover w-full h-full"

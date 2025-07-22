@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { format } from "date-fns";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 export default function UserBookingPage() {
   const [bookings, setBookings] = useState([]);
 
@@ -59,10 +61,11 @@ export default function UserBookingPage() {
                     className="block bg-white border rounded-lg shadow hover:shadow-md transition overflow-hidden"
                   >
                     <img
-                      src={`http://localhost:3000/uploads/${booking.place.photos[0]}`}
+                      src={`${API_BASE_URL}/uploads/${booking.place.photos[0]}`}
                       alt={booking.place.title}
                       className="h-48 w-full object-cover"
                     />
+
                     <div className="p-4 space-y-2">
                       <h2 className="text-xl font-semibold text-gray-800">
                         {booking.place.title}

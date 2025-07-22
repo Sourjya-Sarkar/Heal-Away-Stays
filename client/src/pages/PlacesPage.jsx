@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import PlacesFormPage from "./PlacesFormPage";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 
 export default function PlacesPage() {
   const { action } = useParams();
@@ -46,7 +49,7 @@ export default function PlacesPage() {
                   <div className="w-32 h-32 bg-gray-300 rounded-lg overflow-hidden">
                     {place.photos?.[0] && (
                       <img
-                        src={`http://localhost:3000/uploads/${place.photos[0]}`}
+                        src={`${API_BASE_URL}/uploads/${place.photos[0]}`}
                         alt={place.title}
                         className="w-full h-full object-cover"
                       />

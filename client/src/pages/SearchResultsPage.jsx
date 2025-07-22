@@ -3,6 +3,9 @@ import { useLocation, Link } from "react-router-dom";
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : "https://heal-away-stays.onrender.com";
 
 export default function SearchResultsPage() {
   const location = useLocation();
@@ -46,7 +49,7 @@ export default function SearchResultsPage() {
             >
               <Link to={`/place/${place._id}`}>
                 <img
-                  src={`http://localhost:3000/uploads/${place.photos[0]}`}
+                  src={`${API_BASE_URL}/uploads/${place.photos[0]}`}
                   alt={place.title}
                   className="w-full h-48 object-cover"
                 />
