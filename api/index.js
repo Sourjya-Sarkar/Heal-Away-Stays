@@ -24,7 +24,7 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:5173", // local dev
-      "https://heal-away-stays-six.vercel.app/,", // production URL
+      "https://heal-away-stays-six.vercel.app/", // production URL
     ],
     // adjust if frontend is hosted elsewhere
   })
