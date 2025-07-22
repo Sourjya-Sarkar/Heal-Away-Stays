@@ -32,9 +32,10 @@ app.use(
 app.use(cookieParser());
 app.use(
   "/uploads",
-  express.static(path.join(__dirname, "uploads"), {
-    setHeaders: (res, path, stat) => {
-      res.set("Cross-Origin-Resource-Policy", "cross-origin"); // This fixes ORB
+  express.static(uploadsPath, {
+    setHeaders: (res) => {
+      res.set("Cross-Origin-Resource-Policy", "cross-origin"); // ✅ Prevents CORP error
+      res.set("Access-Control-Allow-Origin", "*"); // ✅ Optional if needed for img tags
     },
   })
 );
