@@ -32,10 +32,9 @@ app.use(
 app.use(cookieParser());
 app.use(
   "/uploads",
-  express.static(uploadsPath, {
-    setHeaders: (res) => {
-      res.set("Cross-Origin-Resource-Policy", "cross-origin"); // ✅ Prevents CORP error
-      res.set("Access-Control-Allow-Origin", "*"); // ✅ Optional if needed for img tags
+  express.static(uploadDir, {
+    setHeaders: (res, path, stat) => {
+      res.set("Cross-Origin-Resource-Policy", "cross-origin");
     },
   })
 );
