@@ -16,7 +16,7 @@ const Booking = require("./models/Booking");
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
-
+const uploadDir = path.join(__dirname, "uploads");
 app.use(express.json());
 app.use(
   cors({
@@ -43,7 +43,7 @@ console.log("Connecting to MongoDB...");
 mongoose.connect(process.env.MONGO_URL);
 
 // ✅ Ensure "uploads" directory exists
-const uploadDir = path.join(__dirname, "uploads");
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
