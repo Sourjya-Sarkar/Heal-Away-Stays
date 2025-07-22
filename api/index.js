@@ -13,7 +13,7 @@ const User = require("./models/User");
 const Place = require("./models/Place");
 require("dotenv").config();
 const Booking = require("./models/Booking");
-
+app.set("trust proxy", 1);
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
 const uploadDir = path.join(__dirname, "uploads");
@@ -103,8 +103,8 @@ app.post("/login", async (req, res) => {
         res
           .cookie("token", token, {
             httpOnly: true,
-            sameSite: "lax",
-            secure: false,
+            sameSite: "none",
+            secure: true,
           })
           .json({ _id: userDoc._id, name: userDoc.name, email: userDoc.email });
       }
@@ -129,9 +129,9 @@ app.get("/profile", (req, res) => {
 app.post("/logout", (req, res) => {
   res
     .cookie("token", "", {
-      sameSite: "lax",
-      secure: true,
       httpOnly: true,
+      sameSite: "none",
+      secure: true,
       expires: new Date(0),
     })
     .json(true);
